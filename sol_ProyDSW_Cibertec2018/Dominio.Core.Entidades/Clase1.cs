@@ -10,5 +10,6 @@ namespace Dominio.Core.Entidades
     {
 
         public String nom_emo { get; set; }
+        public int cod_emp { get; set; }
     }
 }
