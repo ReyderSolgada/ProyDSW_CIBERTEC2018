@@ -19,6 +19,24 @@ namespace ProyDSW_Cibertec2018.Controllers
             return View(new Login());
         }
 
+
+        
+
+        
+        public ActionResult Cerrar_Sesion()
+        {
+            try
+            {
+                Session.Clear();
+                return RedirectToAction("Inicio_Sesion");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
         [HttpPost]
         public ActionResult Inicio_Sesion(Login l)
         {
@@ -29,6 +47,9 @@ namespace ProyDSW_Cibertec2018.Controllers
 
                 if(lista !=null)
                 {
+                    Session["LogUser"] = l.Usuario.ToString();
+                   
+
                     return RedirectToAction("Listado_Cliente");
                 }
                 else
@@ -45,7 +66,15 @@ namespace ProyDSW_Cibertec2018.Controllers
         
         public ActionResult Listado_Cliente()
         {
-            return View(lm.listar_Login().ToList());
+            if(Session["LogUser"]!=null)
+            {
+                return View(lm.listar_Login().ToList());
+            }
+            else
+            {
+                return RedirectToAction("Inicio_Sesion");
+            }
+            
         }
 
         // GET: Login/Create

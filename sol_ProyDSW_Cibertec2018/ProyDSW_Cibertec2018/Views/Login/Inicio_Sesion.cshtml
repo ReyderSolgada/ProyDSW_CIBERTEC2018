@@ -6,28 +6,22 @@
 
 <h2>Inicio_Sesion</h2>
 
-@using (Html.BeginForm("Inicio_Sesion", "Login", FormMethod.Post))
-{
+<form action="/Login/Inicio_Sesion" method="post" class="col-12">
 
-    <table>
-        <tr>
-            <td>@Html.LabelFor(a=>a.Usuario)</td>
-            <td>@Html.TextBoxFor(a=>a.Usuario)</td>
-        </tr>
+    <div class="form-group">
+        <input id="Usuario" name="Usuario" type="text" value="" class="form-control"/>
+    </div>
 
-        <tr>
-            <td> @Html.LabelFor(a=>a.Contraseña)</td>
-            <td> @Html.PasswordFor(a=>a.Contraseña)</td>
-        </tr>
 
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Login"/>
-            </td>
-            <td></td>
-        </tr>
 
-    </table>
+    <div class="form-group">
+        <input id="Contrase_a" name="Contraseña" type="password" class="form-control"/>
+    </div>
 
-}
+
+    <div class="form-group">
+        <input type="submit" value="Login" class="btn" />
+    </div>
+    
+
+</form>
