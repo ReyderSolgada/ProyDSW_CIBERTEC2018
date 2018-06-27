@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Dominio.Core.Entidades
 {
-    public class Class1
+    public class Login
     {
-        public int MyProperty { get; set; }
+        public string Usuario { get; set; }
+        public string Contraseña { get; set; }
     }
 }
