@@ -4,20 +4,48 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using Dominio.MainModule;
+using Dominio.Core.Entidades;
+
 namespace ProyDSW_Cibertec2018.Controllers
 {
     public class LoginController : Controller
     {
+
+        LoginManager lm = new LoginManager();
         // GET: Login
-        public ActionResult Index()
+        public ActionResult Inicio_Sesion()
         {
-            return View();
+            return View(new Login());
         }
 
-        // GET: Login/Details/5
-        public ActionResult Details(int id)
+        [HttpPost]
+        public ActionResult Inicio_Sesion(Login l)
         {
-            return View();
+            try
+            {
+                var lista = lm.listar_Login().Where(x => x.Usuario.Equals(l.Usuario.ToString()) && x.Contraseña.Equals(l.Contraseña.ToString())).FirstOrDefault();
+
+
+                if(lista !=null)
+                {
+                    return RedirectToAction("Listado_Cliente");
+                }
+                else
+                {
+                    return View(new Login());
+                }
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        
+        public ActionResult Listado_Cliente()
+        {
+            return View(lm.listar_Login().ToList());
         }
 
         // GET: Login/Create

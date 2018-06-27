@@ -1,0 +1,33 @@
+﻿@model Dominio.Core.Entidades.Login
+
+@{
+    ViewBag.Title = "Inicio_Sesion";
+}
+
+<h2>Inicio_Sesion</h2>
+
+@using (Html.BeginForm("Inicio_Sesion", "Login", FormMethod.Post))
+{
+
+    <table>
+        <tr>
+            <td>@Html.LabelFor(a=>a.Usuario)</td>
+            <td>@Html.TextBoxFor(a=>a.Usuario)</td>
+        </tr>
+
+        <tr>
+            <td> @Html.LabelFor(a=>a.Contraseña)</td>
+            <td> @Html.PasswordFor(a=>a.Contraseña)</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Login"/>
+            </td>
+            <td></td>
+        </tr>
+
+    </table>
+
+}
