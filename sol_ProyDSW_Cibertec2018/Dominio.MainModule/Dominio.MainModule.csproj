@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="EmpleadoManager.cs" />
     <Compile Include="LoginManager.cs" />
+    <Compile Include="nomb.cs" />
     <Compile Include="otro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
