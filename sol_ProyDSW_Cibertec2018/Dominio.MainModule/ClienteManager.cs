@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Infraestructura.Data.SqlServer;
 using Dominio.Core.Entidades;
+using Infraestructura.Data.SqlServer;
 
 namespace Dominio.MainModule
 {
-    public class ClientesManager
+   public class ClienteManager
     {
         ClientesDAL objC = new ClientesDAL();
         public List<Clientes> ListarCliente()
@@ -20,7 +20,7 @@ namespace Dominio.MainModule
         {
             return objC.BuscarCliente(xcod);
         }
-        public string ActualizarCliente(Clientes obj)GGFDFFDFDFD
+        public string ActualizarCliente(Clientes obj)
         {
             return objC.ActualizarCliente(obj);
         }
@@ -31,7 +31,7 @@ namespace Dominio.MainModule
         public string EliminarCliente(Clientes obj)
         {
             return objC.EliminarCliente(obj);
-        }  
+        }
 
     }
 }
