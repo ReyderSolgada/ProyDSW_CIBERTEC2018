@@ -31,7 +31,7 @@ namespace Dominio.MainModule
         public string EliminarCliente(Clientes obj)
         {
             return objC.EliminarCliente(obj);
-        }
+        }  
 
     }
 }
