@@ -12,7 +12,7 @@ namespace Dominio.Core.Entidades
    public class Clientes
     {
         [DisplayName("Código Cliente")]
-        [Required(AllowEmptyStrings =false,ErrorMessage ="Código Obligatorio")]
+        [Required(AllowEmptyStrings =false,ErrorMessage ="Código Obligatorioss")]
         public string codcli { get; set; }
         [DisplayName("Nombre Cliente")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Nombre Obligatorio")]
