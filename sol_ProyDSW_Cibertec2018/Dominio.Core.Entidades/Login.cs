@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Dominio.Core.Entidades
 {
-    class Clase1
+    public class Login
     {
-
-        public String nom_emo { get; set; }
+        public string Usuario { get; set; }
+        public string Contraseña { get; set; }
     }
 }
