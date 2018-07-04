@@ -69,6 +69,14 @@ namespace Infraestructura.Data.SqlServer
                 mensaje = "Cliente " + obj.nomcli + " agregado correctamente";
             return mensaje;
         }
+        public string EliminarCliente(Clientes obj)
+        {
+            string mensaje = "";
+            int registro = SqlHelper.ExecuteNonQuery("USP_ELIMINAR_CLIENTES_LOGIC", obj.codcli);
+            if (registro == 1)
+                mensaje = "Cliente " + obj.nomcli + " agregado correctamente";
+            return mensaje;
+        }
 
 
     }
