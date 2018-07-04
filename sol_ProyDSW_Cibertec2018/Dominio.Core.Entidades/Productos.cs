@@ -14,7 +14,7 @@ namespace Dominio.Core.Entidades
 
         [DisplayName("Código de Producto")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Código Obligatorio")]
-        public int codpro { get; set; }
+        public String codpro { get; set; }
         [DisplayName("Nombre de Producto")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Nombre Obligatorio")]
         public String  nompro { get; set; }
@@ -26,10 +26,10 @@ namespace Dominio.Core.Entidades
         public double precio { get; set; }
         [DisplayName("Tipo de Producto")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Tipo de producto obligatorio")]
-        public int codtipo { get; set; }
+        public String codtipo { get; set; }
         [DisplayName("estado")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Estado Obligatorio")]
-        public int eliminado { get; set; }
+        public String eliminado { get; set; }
 
     }
 }

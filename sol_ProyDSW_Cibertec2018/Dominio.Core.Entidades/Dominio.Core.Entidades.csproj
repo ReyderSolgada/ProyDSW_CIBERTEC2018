@@ -43,8 +43,11 @@
   <ItemGroup>
     <Compile Include="Boleta.cs" />
     <Compile Include="Clientes.cs" />
+    <Compile Include="cosas.cs" />
+    <Compile Include="Empleado.cs" />
     <Compile Include="Detalle_Boleta.cs" />
     <Compile Include="Login.cs" />
+    <Compile Include="most.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rata.cs" />
