@@ -13,7 +13,7 @@ namespace Dominio.Core.Entidades
     {
 
         [DisplayName("Código de Producto")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Código Obligatorio dr")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Código Obligatorio")]
         public int codpro { get; set; }
         [DisplayName("Nombre de Producto")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Nombre Obligatorio")]
