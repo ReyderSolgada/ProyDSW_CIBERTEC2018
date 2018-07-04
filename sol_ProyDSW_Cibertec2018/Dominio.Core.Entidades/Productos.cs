@@ -12,7 +12,7 @@ namespace Dominio.Core.Entidades
     class Productos
     {
 
-        [DisplayName("Código de Producto")]
+        [DisplayName("Código de Productossss")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Código Obligatorio")]
         public int codpro { get; set; }
         [DisplayName("Nombre de Producto")]
