@@ -12,7 +12,6 @@ namespace Dominio.MainModule
     public class ClientesManager
     {
         ClientesDAL objC = new ClientesDAL();
-
         public List<Clientes> ListarCliente()
         {
             return objC.ListarCliente();
