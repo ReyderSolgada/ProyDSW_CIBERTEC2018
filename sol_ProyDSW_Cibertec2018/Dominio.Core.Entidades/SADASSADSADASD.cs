@@ -9,5 +9,6 @@ namespace Dominio.Core.Entidades
     class SADASSADSADASD
     {
         public int MyProperty { get; set; }
+        public int MyProperty { get; set; }
     }
 }
