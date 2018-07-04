@@ -11,7 +11,7 @@ namespace Dominio.Core.Entidades
     public class Empleado
     {
 
-        [Display(Name = "Codigo")]
+        [Display(Name = "Codigo num1")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Codigo Requeridods")]
         public string codemp { get; set; }
 
