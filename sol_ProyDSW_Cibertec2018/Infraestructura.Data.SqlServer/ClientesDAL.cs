@@ -66,6 +66,14 @@ namespace Infraestructura.Data.SqlServer
             int registro = SqlHelper.ExecuteNonQuery("USP_INSERTAR_CLIENTES", obj.codcli, obj.nomcli, obj.coddis,
                 obj.direccioncli, obj.dnicli, obj.emailcli, obj.celcli);
             if (registro == 1)
+                mensaje = "Cliente " + obj.nomcli + " insertado correctamente";
+            return mensaje;
+        }
+        public string EliminarCliente(Clientes obj)
+        {
+            string mensaje = "";
+            int registro = SqlHelper.ExecuteNonQuery("USP_ELIMINAR_CLIENTES_LOGIC", obj.codcli);
+            if (registro == 1)
                 mensaje = "Cliente " + obj.nomcli + " agregado correctamente";
             return mensaje;
         }
