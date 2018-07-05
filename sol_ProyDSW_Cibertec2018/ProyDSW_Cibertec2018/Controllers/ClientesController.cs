@@ -15,6 +15,9 @@ namespace ProyDSW_Cibertec2018.Controllers
         // GET: Clientes
         public ActionResult ListarCliente()
         {
+            ViewBag.MENSAJE = "";
+            if (TempData["MENSAJE"] != null)
+                ViewBag.MENSAJE = TempData["MENSAJE"].ToString();
             return View(cm.ListarCliente());
         }
 
@@ -33,13 +36,15 @@ namespace ProyDSW_Cibertec2018.Controllers
 
         // POST: Clientes/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult CreateCliente(Clientes obj)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                ViewBag.DISTRITO = new SelectList(dm.ListarDistrito(), "coddis", "nomdis",obj.coddis);
+                string mensaje = cm.InsertarCliente(obj);
+                TempData["MENSAJE"] = mensaje;
+                //return View(obj);
+                return RedirectToAction("ListarCliente");
             }
             catch
             {

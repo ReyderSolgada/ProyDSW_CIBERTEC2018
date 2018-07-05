@@ -137,6 +137,7 @@
     <Content Include="Views\Empleado\ListaTodoEmpleados.cshtml" />
     <Content Include="Views\Clientes\ListarCliente.cshtml" />
     <Content Include="Views\Clientes\DetalleCliente.cshtml" />
+    <Content Include="Views\Clientes\CreateCliente.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

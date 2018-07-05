@@ -7,7 +7,7 @@
 <h2>ListarCliente</h2>
 
 <p>
-    @Html.ActionLink("Nuevo Cliente", "Create")
+    @Html.ActionLink("Nuevo Cliente", "CreateCliente")
 </p>
 <table class="table">
     <tr>
@@ -74,3 +74,7 @@
 }
 
 </table>
+<script>
+    if ('@ViewBag.MENSAJE' != "")
+        alert(@ViewBag.MENSAJE);
+</script>
