@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClienteManager.cs" />
+    <Compile Include="DistritoManager.cs" />
     <Compile Include="EmpleadoManager.cs" />
     <Compile Include="LoginManager.cs" />
     <Compile Include="otro.cs" />

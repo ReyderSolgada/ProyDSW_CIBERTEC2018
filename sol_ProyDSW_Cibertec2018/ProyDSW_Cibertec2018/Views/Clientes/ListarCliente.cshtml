@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Dominio.Core.Entidades.Clientes>
+
+@{
+    ViewBag.Title = "ListarCliente";
+}
+
+<h2>ListarCliente</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Cliente", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codcli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomcli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.coddis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccioncli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dnicli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emailcli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.celcli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contracli)
+        </th>
+        
+        <th style="text-align:center">Acciones</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codcli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomcli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.coddis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccioncli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dnicli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emailcli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.celcli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contracli)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Detalle", "DetalleCliente", new { xcod=item.codcli}) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

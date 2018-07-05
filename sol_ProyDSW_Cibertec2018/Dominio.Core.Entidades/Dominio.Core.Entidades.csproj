@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clientes.cs" />
+    <Compile Include="Distrito.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="most.cs" />

@@ -1,0 +1,90 @@
+﻿@model Dominio.Core.Entidades.Clientes
+
+@{
+    ViewBag.Title = "DetalleCliente";
+}
+
+<h2>DetalleCliente</h2>
+
+<div>
+    <h4>Clientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codcli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codcli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomcli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomcli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.coddis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.coddis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccioncli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccioncli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dnicli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dnicli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emailcli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emailcli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.celcli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.celcli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contracli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contracli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eliminado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eliminado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Regresar", "ListarCliente")
+</p>
