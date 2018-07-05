@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table" style="text-align:center">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.codemp)
@@ -39,12 +39,11 @@
             @Html.DisplayNameFor(model => model.codcargo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.contra)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.eliminado)
         </th>
-        <th></th>
+        <th>
+            Opciones
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -77,15 +76,12 @@
             @Html.DisplayFor(modelItem => item.codcargo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.contra)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.eliminado)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Eliminar", "EliminarEmpleado", new { xcodemp=item.codemp })
         </td>
     </tr>
 }

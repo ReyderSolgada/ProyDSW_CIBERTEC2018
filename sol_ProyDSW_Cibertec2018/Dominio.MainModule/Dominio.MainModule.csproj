@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ClienteManager.cs" />
     <Compile Include="EmpleadoManager.cs" />
+    <Compile Include="EnviarCorreo.cs" />
     <Compile Include="LoginManager.cs" />
     <Compile Include="lopppp.cs" />
     <Compile Include="nomb.cs" />

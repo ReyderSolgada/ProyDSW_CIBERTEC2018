@@ -57,6 +57,10 @@ html {
       -ms-text-size-adjust: 100%;
 }
 
+th{
+    text-align:center !important;
+}
+
 body {
   margin: 0;
 }
@@ -223,6 +227,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 
 @media print {
   * {

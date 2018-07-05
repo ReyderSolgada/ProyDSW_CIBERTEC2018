@@ -12,9 +12,11 @@ namespace ProyDSW_Cibertec2018.Controllers
 {
     public class EmpleadoController : Controller
     {
+        
 
         EmpleadoManager em = new EmpleadoManager();
-        // GET: Empleado
+       
+        // GET: Listado Empleado
         public ActionResult ListaTodoEmpleados()
         {
             return View(em.Listado_Todo_Emleado().ToList());
@@ -26,21 +28,26 @@ namespace ProyDSW_Cibertec2018.Controllers
             return View();
         }
 
-        // GET: Empleado/Create
-        public ActionResult Create()
+        // GET: Insertar Empleado
+        public ActionResult InsertarEmpleado()
         {
-            return View();
+            return View(new Empleado());
         }
 
-        // POST: Empleado/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Empleado emp)
         {
             try
             {
-                // TODO: Add insert logic here
+                string mensaje = em.InsertaEmpleado(emp);
+                EnviarCorreo objEnvio = new EnviarCorreo("jose_uno2014@hotmail.com","Envio de Correo","Esta es una prueba de envio electronico");
 
-                return RedirectToAction("Index");
+                if(objEnvio.Estado)
+                    Console.Write("Exito al Envio de correo");
+                else
+                    Console.Write("Error al Envio de correo");
+
+                return RedirectToAction("ListaTodoEmpleados");
             }
             catch
             {
@@ -70,21 +77,25 @@ namespace ProyDSW_Cibertec2018.Controllers
             }
         }
 
-        // GET: Empleado/Delete/5
-        public ActionResult Delete(int id)
+        // GET: EliminarEmpleado
+        public ActionResult EliminarEmpleado(string xcodemp)
         {
-            return View();
+            var filtracod = em.Listado_Todo_Emleado().Where(x => x.codemp.Equals(xcodemp)).FirstOrDefault();
+            return View(filtracod);
         }
 
-        // POST: Empleado/Delete/5
+        // POST: EliminarEmpleado
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult EliminarEmpleado(string xcodemp, Empleado emp)
         {
             try
             {
-                // TODO: Add delete logic here
+                emp = new Empleado();
+                emp= em.Listado_Todo_Emleado().Where(x => x.codemp.Equals(xcodemp)).FirstOrDefault();
 
-                return RedirectToAction("Index");
+                string mensaje = em.EliminaEmpleado(emp);
+
+                return RedirectToAction("ListaTodoEmpleados");
             }
             catch
             {
