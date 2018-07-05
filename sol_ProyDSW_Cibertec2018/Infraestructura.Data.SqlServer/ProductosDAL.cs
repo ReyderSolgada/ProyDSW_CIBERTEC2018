@@ -32,10 +32,10 @@ namespace Infraestructura.Data.SqlServer
             return lista;
         }
 
-        public Productos BuscarProducto(string xcod)
+        public Productos BuscarProducto(string xnom)
         {
             Productos obj = new Productos();
-            SqlDataReader lector = SqlHelper.ExecuteReader("USP_LISTAR_PRODUCTOS_X_CODIGO", xcod);
+            SqlDataReader lector = SqlHelper.ExecuteReader("USP_LISTAR_PRODUCTOS_X_DESCRIPCION", xnom);
             while (lector.Read())
             {
                 obj.codpro = lector.GetString(0);
@@ -48,25 +48,32 @@ namespace Infraestructura.Data.SqlServer
             lector.Close();
             return obj;
         }
-        public string ActualizarProducto(Clientes obj)
+        public string ActualizarProducto(Productos obj)
         {
             string mensaje = "";
-            int registro = SqlHelper.ExecuteNonQuery("USP_ACTUALIZAR_CLIENTES", obj.codcli, obj.nomcli, obj.coddis,
-                obj.direccioncli, obj.dnicli, obj.emailcli, obj.celcli);
+            int registro = SqlHelper.ExecuteNonQuery("USP_ACTUALIZAR_PRODUCTOS",obj.nompro,obj.stock,
+                obj.precio, obj.codtipo, obj.eliminado);
             if (registro == 1)
-                mensaje = "Cliente " + obj.nomcli + " actualizado correctamente";
+                mensaje = "Producto " + obj.nompro + " actualizado correctamente";
             return mensaje;
         }
-        public string InsertarCliente(Clientes obj)
+        public string InsertarProducto(Productos obj)
         {
             string mensaje = "";
-            int registro = SqlHelper.ExecuteNonQuery("USP_INSERTAR_CLIENTES", obj.codcli, obj.nomcli, obj.coddis,
-                obj.direccioncli, obj.dnicli, obj.emailcli, obj.celcli);
+            int registro = SqlHelper.ExecuteNonQuery("USP_INSERTAR_PRODUCTOS", obj.codpro, obj.nompro,obj.stock,
+                obj.precio, obj.codtipo, obj.eliminado);
             if (registro == 1)
-                mensaje = "Cliente " + obj.nomcli + " agregado correctamente";
+                mensaje = "Producto " + obj.nompro + " agregado correctamente";
             return mensaje;
         }
 
-
+        public string EliminarProducto(Productos obj)
+        {
+            string mensaje = "";
+            int registro = SqlHelper.ExecuteNonQuery("USP_ELIMINAR_CLIENTES_LOGIC", obj.codpro);
+            if (registro == 1)
+                mensaje = "Producto " + obj.nompro + " agregado correctamente";
+            return mensaje;
+        }
     }
 }

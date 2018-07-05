@@ -45,6 +45,7 @@
     <Compile Include="LoginManager.cs" />
     <Compile Include="nomb.cs" />
     <Compile Include="otro.cs" />
+    <Compile Include="ProductoManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
