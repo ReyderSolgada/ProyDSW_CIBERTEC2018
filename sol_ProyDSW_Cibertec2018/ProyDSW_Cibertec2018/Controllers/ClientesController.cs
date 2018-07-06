@@ -53,20 +53,22 @@ namespace ProyDSW_Cibertec2018.Controllers
         }
 
         // GET: Clientes/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditarCliente(string xcod)
         {
-            return View();
+            ViewBag.DISTRITO = new SelectList(dm.ListarDistrito(), "coddis", "nomdis");
+            return View(cm.BuscarCliente(xcod));
         }
 
         // POST: Clientes/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditarCliente(Clientes obj)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                ViewBag.DISTRITO = new SelectList(dm.ListarDistrito(), "coddis", "nomdis", obj.coddis);
+                string mensaje = cm.ActualizarCliente(obj);
+                TempData["MENSAJE"] = mensaje;
+                return RedirectToAction("ListarCliente");
             }
             catch
             {
@@ -75,20 +77,22 @@ namespace ProyDSW_Cibertec2018.Controllers
         }
 
         // GET: Clientes/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteCliente(string xcod)
         {
-            return View();
+            return View(cm.BuscarCliente(xcod));
         }
 
         // POST: Clientes/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult DeleteCliente(Clientes obj,string xcod)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                obj = new Clientes();
+                obj = cm.BuscarCliente(xcod);
+                string mensaje = cm.EliminarCliente(obj);
+                TempData["MENSAJE"] = mensaje;
+                return RedirectToAction("ListarCliente");
             }
             catch
             {

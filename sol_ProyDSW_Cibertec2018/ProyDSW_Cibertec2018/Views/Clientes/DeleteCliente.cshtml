@@ -1,11 +1,12 @@
 ﻿@model Dominio.Core.Entidades.Clientes
 
 @{
-    ViewBag.Title = "DetalleCliente";
+    ViewBag.Title = "DeleteCliente";
 }
 
-<h2>DetalleCliente</h2>
+<h2>DeleteCliente</h2>
 
+<h3>Deseas borrar Al cliente?</h3>
 <div>
     <h4>Clientes</h4>
     <hr />
@@ -74,17 +75,14 @@
             @Html.DisplayFor(model => model.contracli)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.eliminado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.eliminado)
-        </dd>
-
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar ", "ListarCliente",null, new { @class = "btn btn-primary" })
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { xcod=Model.celcli }, new { @class = "btn btn-success" }) |
-    @Html.ActionLink("Regresar", "ListarCliente",null, new { @class = "btn btn-primary" })
-</p>

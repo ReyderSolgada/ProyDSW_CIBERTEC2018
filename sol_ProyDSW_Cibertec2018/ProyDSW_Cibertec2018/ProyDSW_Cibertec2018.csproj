@@ -138,6 +138,8 @@
     <Content Include="Views\Clientes\ListarCliente.cshtml" />
     <Content Include="Views\Clientes\DetalleCliente.cshtml" />
     <Content Include="Views\Clientes\CreateCliente.cshtml" />
+    <Content Include="Views\Clientes\DeleteCliente.cshtml" />
+    <Content Include="Views\Clientes\EditarCliente.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
