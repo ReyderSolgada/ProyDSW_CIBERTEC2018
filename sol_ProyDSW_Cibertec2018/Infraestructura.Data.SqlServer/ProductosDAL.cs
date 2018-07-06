@@ -14,6 +14,7 @@ namespace Infraestructura.Data.SqlServer
 
         public List<Productos> ListarProducto()
         {
+     
             List<Productos> lista = new List<Productos>();
             SqlDataReader lector = SqlHelper.ExecuteReader(CAD_CN, "USP_LISTAR_PRODUCTOS");
             while (lector.Read())
