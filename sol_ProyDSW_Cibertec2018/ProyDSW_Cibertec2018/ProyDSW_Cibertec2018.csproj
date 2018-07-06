@@ -94,6 +94,11 @@
     <Content Include="Base_De_Datos\BD_DSWI_insert.sql" />
     <Content Include="Base_De_Datos\BD_DSWI_procedures.sql" />
     <Content Include="Base_De_Datos\BD_DSWI_triggers.sql" />
+    <Content Include="Base_De_Datos\Gallardo\Base_De_Datos.sql" />
+    <Content Include="Base_De_Datos\Gallardo\Envio_De_Correo.png" />
+    <Content Include="Base_De_Datos\Gallardo\insert.sql" />
+    <Content Include="Base_De_Datos\Gallardo\Procedures.sql" />
+    <Content Include="Base_De_Datos\Gallardo\Trigger.sql" />
     <Content Include="Base_De_Datos\Login_de_Prueba.sql" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
