@@ -15,6 +15,8 @@ namespace ProyDSW_Cibertec2018.Controllers
         
 
         EmpleadoManager em = new EmpleadoManager();
+        CargoManager cm = new CargoManager();
+        DistritoManager dm = new DistritoManager();
        
         // GET: Listado Empleado
         public ActionResult ListaTodoEmpleados()
@@ -31,21 +33,18 @@ namespace ProyDSW_Cibertec2018.Controllers
         // GET: Insertar Empleado
         public ActionResult InsertarEmpleado()
         {
+            ViewBag.CARGO = new SelectList(cm.Listado_Todo_Cargo(), "CODCARGO", "NOMCARGO");
+            ViewBag.DISTRITO = new SelectList(dm.Listado_Todo_Distrito(), "CODDIS", "NOMDIS");
+
             return View(new Empleado());
         }
 
         [HttpPost]
-        public ActionResult Create(Empleado emp)
+        public ActionResult InsertarEmpleado(Empleado emp)
         {
             try
             {
                 string mensaje = em.InsertaEmpleado(emp);
-                EnviarCorreo objEnvio = new EnviarCorreo("jose_uno2014@hotmail.com","Envio de Correo","Esta es una prueba de envio electronico");
-
-                if(objEnvio.Estado)
-                    Console.Write("Exito al Envio de correo");
-                else
-                    Console.Write("Error al Envio de correo");
 
                 return RedirectToAction("ListaTodoEmpleados");
             }
@@ -56,20 +55,26 @@ namespace ProyDSW_Cibertec2018.Controllers
         }
 
         // GET: Empleado/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult ActualizaEmpleados(string codemp)
         {
-            return View();
+           
+
+            var filtra = em.Listado_Todo_Emleado().Where(x => x.codemp.Equals(codemp)).FirstOrDefault();
+            ViewBag.CARGO = new SelectList(cm.Listado_Todo_Cargo().ToList(), "CODCARGO", "NOMCARGO", "CAR04");
+            ViewBag.DISTRITO = new SelectList(dm.Listado_Todo_Distrito().ToList(), "CODDIS",filtra.coddis);
+
+            return View(filtra);
         }
 
         // POST: Empleado/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult ActualizaEmpleados(string codemp, Empleado emp)
         {
             try
             {
-                // TODO: Add update logic here
+                string mensaje = em.ActualizaEmpleado(emp);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("ListaTodoEmpleados");
             }
             catch
             {

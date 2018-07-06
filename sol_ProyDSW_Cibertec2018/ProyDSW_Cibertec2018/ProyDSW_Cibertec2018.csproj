@@ -135,6 +135,8 @@
     <Content Include="Views\Login\Inicio_Sesion.cshtml" />
     <Content Include="Views\Empleado\ListaTodoEmpleados.cshtml" />
     <Content Include="Views\Empleado\EliminarEmpleado.cshtml" />
+    <Content Include="Views\Empleado\InsertarEmpleado.cshtml" />
+    <Content Include="Views\Empleado\ActualizaEmpleados.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -7,7 +7,7 @@
 <h2>ListaTodoEmpleados</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "InsertarEmpleado")
 </p>
 <table class="table" style="text-align:center">
     <tr>
@@ -25,6 +25,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.dni)
+        </th>
+         <th>
+            @Html.DisplayNameFor(model => model.correo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.turno)
@@ -64,6 +67,9 @@
             @Html.DisplayFor(modelItem => item.dni)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.correo)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.turno)
         </td>
         <td>
@@ -79,9 +85,9 @@
             @Html.DisplayFor(modelItem => item.eliminado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Actualizar", "ActualizaEmpleados", new { codemp=item.codemp }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Eliminar", "EliminarEmpleado", new { xcodemp=item.codemp })
+            @Html.ActionLink("Eliminar", "EliminarEmpleado", new { xcodemp = item.codemp })
         </td>
     </tr>
 }

@@ -29,6 +29,10 @@ namespace Dominio.MainModule
             return objL.InsertaEmpleado(emp);
         }
 
+        public string ActualizaEmpleado(Empleado emp)
+        {
+            return objL.ActualizaEmpleado(emp);
+        }
 
     }
 }

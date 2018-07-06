@@ -12,7 +12,7 @@ namespace Dominio.Core.Entidades
     {
 
         [Display(Name = "Codigo")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Codigo Requeridods")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Codigo Requerido")]
         public string codemp { get; set; }
 
         [Display(Name = "Nombre")]
@@ -31,6 +31,10 @@ namespace Dominio.Core.Entidades
         [Required(AllowEmptyStrings = false, ErrorMessage = "Dni Requerido")]
         public string dni { get; set; }
 
+        [Display(Name = "Correo")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Correo Requerido")]
+        public string correo { get; set; }
+
         [Display(Name = "Turno")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Turno Requerido")]
         public string turno { get; set; }
@@ -41,6 +45,8 @@ namespace Dominio.Core.Entidades
 
         [Display(Name = "Fecha Ingreso")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Fecha Ingreso Requerido")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true,NullDisplayText ="")]
         public DateTime fecha_ing { get; set; }
 
         [Display(Name = "Cargo")]
