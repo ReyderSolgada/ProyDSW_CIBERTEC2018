@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Dominio.Core.Entidades.Productos>
+
+@{
+    ViewBag.Title = "ListadoProductos";
+}
+
+<h2>ListadoProductos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<br />
+
+@Html.Partial("_PartialListadoProducto");

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Dominio.Core.Entidades.Productos>
+  
+<link href="~/css/EstiloCarrito.css" rel="stylesheet" />
+
+<div class="cuerpo">
+    @foreach (var item in Model)
+    {
+        <div class="registro">
+            <table>
+                <tr>
+                    <td><img class="imagen" src="@Url.Content("~/fotos_articulos/"+@item.codpro+".jpg")" /></td>
+                </tr>
+                <tr>
+                    <td>@item.nompro</td>
+                </tr>
+                <tr>
+                    <td>@item.precio</td>
+                </tr>
+                <tr>
+                    <td>@item.precio</td>
+                </tr>
+                <tr>
+                    <td>@Html.ActionLink("Seleccionar", "Seleccionar_Articulo", new { id = item.codpro }, new { @class = "btn btn-success" })</td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>

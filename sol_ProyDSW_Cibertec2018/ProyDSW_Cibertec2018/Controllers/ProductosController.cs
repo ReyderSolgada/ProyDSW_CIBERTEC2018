@@ -4,90 +4,91 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using ProyDSW_Cibertec2018.Models;
-using Dominio.MainModule;
 using Dominio.Core.Entidades;
+using Dominio.MainModule;
 
 namespace ProyDSW_Cibertec2018.Controllers
 {
     public class ProductosController : Controller
     {
-        CarritoDAO objDAO = new CarritoDAO();
-        // GET: Producto
-        public ActionResult ListaProductos(String prod_nom="")
+        ProductoManager pm = new ProductoManager();
+
+        // GET: Productos
+        public ActionResult ListadoProductos()
         {
-            if (Session["carrito"] == null)
+            return View(pm.Listado_Todo_Productos().ToList());
+        }
+
+        // GET: Productos/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        // GET: Productos/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Productos/Create
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
             {
-                List<producto_carrito> carrito = new List<producto_carrito>();
-                Session["carrito"] = carrito;
+                // TODO: Add insert logic here
+
+                return RedirectToAction("Index");
             }
-            ViewBag.PROD_NOM = prod_nom;
-            return View(objDAO.usp_listar_productos(prod_nom));
-        }
-
-        // GET: Producto/Details/5
-        public ActionResult Seleccionar_Producto(String id="")
-        {
-            usp_listar_productos un_art = objDAO.usp_listar_productos("").Where(x => x.prod_cod.Equals(id)).FirstOrDefault();
-
-            usp_listar_productos art2 = (from z in objDAO.usp_listar_productos("")
-                                         where z.prod_cod.Equals(id)
-                                         select z).FirstOrDefault();
-            /*
-            foreach (var item in objDAO.usp_listar_articulos(""))
+            catch
             {
-                if (item.art_cod.Equals(id))
-                {
-                    un_art3 = item;
-                }
+                return View();
             }
-            */
-            return View(un_art);
         }
 
-        // GET: Empleado/Create
-        public ActionResult Agregar_Carrito(String prod_cod)
+        // GET: Productos/Edit/5
+        public ActionResult Edit(int id)
         {
-            usp_listar_productos un_art2 = (from z in objDAO.usp_listar_productos("")
-                                            where z.prod_cod.Equals(prod_cod)
-                                            select z).FirstOrDefault();
-            producto_carrito x = new producto_carrito();
-            x.prod_cod = un_art2.prod_cod;
-            x.prod_nom = un_art2.prod_nom;
-            x.cant = 1;
-            x.prod_precio = un_art2.prod_pre;
-
-            List<producto_carrito> carrito = (List<producto_carrito>)Session["carrito"];
-            carrito.Add(x);
-
-            Session["Carrito"] = carrito;
-
-
-            return RedirectToAction("ListaProductos");
-
+            return View();
         }
 
-        // POST: Empleado/Create
-      
-
-      
-
-        // POST: Empleado/Edit/5
-      
-
-        // GET: Empleado/Delete/5
-        public ActionResult Comprar()
+        // POST: Productos/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
         {
-            List<producto_carrito> carrito = (List<producto_carrito>)Session["carrito"];
-
-            if (carrito.Count == 0)
+            try
             {
-                return RedirectToAction("ListaProductos");
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
             }
-            return View(carrito);
+            catch
+            {
+                return View();
+            }
         }
 
-        // POST: Empleado/Delete/5
-        
+        // GET: Productos/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: Productos/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

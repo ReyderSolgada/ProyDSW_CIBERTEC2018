@@ -103,7 +103,54 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="css\EstiloCarrito.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fotos_articulos\A0001.jpg" />
+    <Content Include="fotos_articulos\A0002.jpg" />
+    <Content Include="fotos_articulos\A0003.jpg" />
+    <Content Include="fotos_articulos\A0004.jpg" />
+    <Content Include="fotos_articulos\A0005.jpg" />
+    <Content Include="fotos_articulos\A0006.jpg" />
+    <Content Include="fotos_articulos\A0007.jpg" />
+    <Content Include="fotos_articulos\A0008.jpg" />
+    <Content Include="fotos_articulos\A0009.jpg" />
+    <Content Include="fotos_articulos\A0010.jpg" />
+    <Content Include="fotos_articulos\A0011.jpg" />
+    <Content Include="fotos_articulos\A0012.jpg" />
+    <Content Include="fotos_articulos\A0013.jpg" />
+    <Content Include="fotos_articulos\A0014.jpg" />
+    <Content Include="fotos_articulos\A0015.jpg" />
+    <Content Include="fotos_articulos\A0016.jpg" />
+    <Content Include="fotos_articulos\A0017.jpg" />
+    <Content Include="fotos_articulos\A0018.jpg" />
+    <Content Include="fotos_articulos\A0019.jpg" />
+    <Content Include="fotos_articulos\A0020.jpg" />
+    <Content Include="fotos_articulos\A0021.jpg" />
+    <Content Include="fotos_articulos\A0022.jpg" />
+    <Content Include="fotos_articulos\A0023.jpg" />
+    <Content Include="fotos_articulos\A0024.jpg" />
+    <Content Include="fotos_articulos\A0025.jpg" />
+    <Content Include="fotos_articulos\A0026.jpg" />
+    <Content Include="fotos_articulos\A0027.jpg" />
+    <Content Include="fotos_articulos\A0028.jpg" />
+    <Content Include="fotos_articulos\A0029.jpg" />
+    <Content Include="fotos_articulos\A0030.jpg" />
+    <Content Include="fotos_articulos\A0031.jpg" />
+    <Content Include="fotos_articulos\A0032.jpg" />
+    <Content Include="fotos_articulos\A0033.jpg" />
+    <Content Include="fotos_articulos\A0034.jpg" />
+    <Content Include="fotos_articulos\A0035.jpg" />
+    <Content Include="fotos_articulos\A0036.jpg" />
+    <Content Include="fotos_articulos\IMPRESORA_FOTOGRAFICA_02.jpg" />
+    <Content Include="fotos_articulos\IMPRESORA_FOTOGRAFICA_03.jpg" />
+    <Content Include="fotos_articulos\MEMORIAS_4_TRAVELER.jpg" />
+    <Content Include="fotos_articulos\PARLANTES_02.jpg" />
+    <Content Include="fotos_articulos\PENTIUM_I7.jpg" />
+    <Content Include="fotos_articulos\PENTIUM_II.jpg" />
+    <Content Include="fotos_articulos\sin_imagen.jpg" />
+    <Content Include="fotos_articulos\TECLADO_ERGONOMICO2.jpg" />
+    <Content Include="fotos_articulos\TECLADO_PS2.jpg" />
+    <Content Include="fotos_articulos\TINTA_HP1.jpg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -123,12 +170,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CarritoDAO.cs" />
-    <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\SQLHelper.cs" />
+    <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -152,8 +197,8 @@
     <Content Include="Views\Empleado\ActualizaEmpleados.cshtml" />
     <Content Include="Views\Empleado\InsertarEmpleado.cshtml" />
     <Content Include="Views\Login\Inicio_Sesion_Empleado.cshtml" />
-    <Content Include="Views\Productos\ListaProductos.cshtml" />
-    <Content Include="Views\Productos\Seleccionar_Producto.cshtml" />
+    <Content Include="Views\Shared\_PartialListadoProducto.cshtml" />
+    <Content Include="Views\Productos\ListadoProductos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

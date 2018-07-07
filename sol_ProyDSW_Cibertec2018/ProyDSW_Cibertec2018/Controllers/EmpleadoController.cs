@@ -17,7 +17,6 @@ namespace ProyDSW_Cibertec2018.Controllers
         EmpleadoManager em = new EmpleadoManager();
         CargoManager cm = new CargoManager();
         DistritoManager dm = new DistritoManager();
-       
 
         public ActionResult ListaTodoEmpleados()
         {

@@ -6,14 +6,22 @@ using System.Threading.Tasks;
 
 namespace Dominio.Core.Entidades
 {
-    public class Productos
+    public class Item
     {
 
+
         public string codpro { get; set; }
-        public string nompro{ get; set; }
-        public int stock { get; set; }
+        public string nompro { get; set; }
+        public int cantidad { get; set; }
         public decimal precio { get; set; }
         public string codtipo { get; set; }
         public string eliminado { get; set; }
+
+        public decimal importe
+        {
+            get { return cantidad * precio; }
+        }
+
+
     }
 }
