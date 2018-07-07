@@ -1,0 +1,27 @@
+﻿@model Dominio.Core.Entidades.Empleado
+
+@{
+    ViewBag.Title = "Inicio_Sesion_Empleado";
+}
+
+<h2>Inicio_Sesion</h2>
+
+<form action="/Login/Inicio_Sesion_Empleado" method="post" class="col-12">
+
+    <div class="form-group">
+        <input id="dni" name="dni" type="text" value="" class="form-control" />
+    </div>
+
+
+
+    <div class="form-group">
+        <input id="contra" name="contra" type="password" class="form-control" />
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" value="Login" class="btn" />
+    </div>
+
+
+</form>

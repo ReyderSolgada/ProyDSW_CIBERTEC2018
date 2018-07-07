@@ -64,6 +64,7 @@ namespace Infraestructura.Data.SqlServer
 
             if (cuenta == 1)
                 mensaje = "Empleado " + emp.nomemp + " Insertado Correctamente";
+
             return mensaje;
         }
 

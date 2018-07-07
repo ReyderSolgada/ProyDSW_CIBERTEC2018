@@ -135,13 +135,12 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Login\Listado_Cliente.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Login\Inicio_Sesion.cshtml" />
     <Content Include="Views\Empleado\ListaTodoEmpleados.cshtml" />
     <Content Include="Views\Empleado\EliminarEmpleado.cshtml" />
-    <Content Include="Views\Empleado\InsertarEmpleado.cshtml" />
     <Content Include="Views\Empleado\ActualizaEmpleados.cshtml" />
+    <Content Include="Views\Empleado\InsertarEmpleado.cshtml" />
+    <Content Include="Views\Login\Inicio_Sesion_Empleado.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

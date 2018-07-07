@@ -45,7 +45,6 @@
     <Compile Include="Clientes.cs" />
     <Compile Include="Distrito.cs" />
     <Compile Include="Empleado.cs" />
-    <Compile Include="Login.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

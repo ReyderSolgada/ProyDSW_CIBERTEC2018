@@ -18,25 +18,37 @@ namespace ProyDSW_Cibertec2018.Controllers
         CargoManager cm = new CargoManager();
         DistritoManager dm = new DistritoManager();
        
-        // GET: Listado Empleado
+
         public ActionResult ListaTodoEmpleados()
         {
-            return View(em.Listado_Todo_Emleado().ToList());
+            if (TempData["MENSAJE"] != null)
+                ViewBag.MUESTRA = TempData["MENSAJE"].ToString();
+
+            if (Session["LogUser"] != null)
+            {
+                return View(em.Listado_Todo_Emleado().ToList());
+            }
+            else
+            {
+                return   RedirectToAction("Inicio_Sesion_Empleado", "Login");
+            }     
         }
 
-        // GET: Empleado/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Insertar Empleado
+
         public ActionResult InsertarEmpleado()
         {
             ViewBag.CARGO = new SelectList(cm.Listado_Todo_Cargo(), "CODCARGO", "NOMCARGO");
             ViewBag.DISTRITO = new SelectList(dm.Listado_Todo_Distrito(), "CODDIS", "NOMDIS");
 
-            return View(new Empleado());
+            if (Session["LogUser"] != null)
+                return View(new Empleado());
+            else
+                return RedirectToAction("Inicio_Sesion_Empleado", "Login");
         }
 
         [HttpPost]
@@ -44,8 +56,9 @@ namespace ProyDSW_Cibertec2018.Controllers
         {
             try
             {
-                string mensaje = em.InsertaEmpleado(emp);
-
+                string alerta = em.InsertaEmpleado(emp);
+                string alerta2 = "Usuario " + emp.nomemp +" Creado Correctamemte";
+                TempData["MENSAJE"] = alerta2;
                 return RedirectToAction("ListaTodoEmpleados");
             }
             catch
@@ -60,10 +73,14 @@ namespace ProyDSW_Cibertec2018.Controllers
            
 
             var filtra = em.Listado_Todo_Emleado().Where(x => x.codemp.Equals(codemp)).FirstOrDefault();
-            ViewBag.CARGO = new SelectList(cm.Listado_Todo_Cargo().ToList(), "CODCARGO", "NOMCARGO", "CAR04");
-            ViewBag.DISTRITO = new SelectList(dm.Listado_Todo_Distrito().ToList(), "CODDIS",filtra.coddis);
+            ViewBag.CARGO = new SelectList(cm.Listado_Todo_Cargo().ToList(), "CODCARGO", "NOMCARGO",filtra.codcargo);
+            ViewBag.DISTRITO = new SelectList(dm.Listado_Todo_Distrito().ToList(), "CODDIS", "NOMDIS",filtra.coddis);
 
-            return View(filtra);
+            if (Session["LogUser"] != null)
+                return View(filtra);
+
+            else
+                return RedirectToAction("Inicio_Sesion_Empleado", "Login");
         }
 
         // POST: Empleado/Edit/5
@@ -72,8 +89,8 @@ namespace ProyDSW_Cibertec2018.Controllers
         {
             try
             {
-                string mensaje = em.ActualizaEmpleado(emp);
-
+                string alerta = em.ActualizaEmpleado(emp);
+                TempData["MENSAJE"] = alerta;
                 return RedirectToAction("ListaTodoEmpleados");
             }
             catch
@@ -86,7 +103,12 @@ namespace ProyDSW_Cibertec2018.Controllers
         public ActionResult EliminarEmpleado(string xcodemp)
         {
             var filtracod = em.Listado_Todo_Emleado().Where(x => x.codemp.Equals(xcodemp)).FirstOrDefault();
-            return View(filtracod);
+
+            if (Session["LogUser"] != null)
+                return View(filtracod);
+       
+              else
+                return RedirectToAction("Inicio_Sesion_Empleado", "Login");
         }
 
         // POST: EliminarEmpleado
@@ -98,7 +120,10 @@ namespace ProyDSW_Cibertec2018.Controllers
                 emp = new Empleado();
                 emp= em.Listado_Todo_Emleado().Where(x => x.codemp.Equals(xcodemp)).FirstOrDefault();
 
-                string mensaje = em.EliminaEmpleado(emp);
+
+                string alerta = em.EliminaEmpleado(emp);
+
+                TempData["MENSAJE"] = alerta;
 
                 return RedirectToAction("ListaTodoEmpleados");
             }
