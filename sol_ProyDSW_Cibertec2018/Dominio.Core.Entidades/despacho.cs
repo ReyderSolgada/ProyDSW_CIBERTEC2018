@@ -14,11 +14,19 @@ namespace Dominio.Core.Entidades
         [Required(AllowEmptyStrings = false, ErrorMessage = "Numero de despacho Obligatorio")]
         public string nrodespacho { get; set; }
 
+        [DisplayName("Fecha de traslado")]
         public DateTime fechatraslado { get; set; }
 
+        [DisplayName("Fecha de entrega")]
         public DateTime fechaentrega { get; set; }
+
+        [DisplayName("Destino")]
         public string destino { get; set; }
+
+        [DisplayName("Transporte")]
         public string transporte { get; set; }
+
+        [DisplayName("Estado")]
         public int estado { get; set; }
 
 

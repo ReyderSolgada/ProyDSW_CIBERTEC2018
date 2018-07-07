@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Clientes.cs" />
     <Compile Include="cosas.cs" />
+    <Compile Include="detalledespacho.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="despacho.cs" />
     <Compile Include="Login.cs" />
