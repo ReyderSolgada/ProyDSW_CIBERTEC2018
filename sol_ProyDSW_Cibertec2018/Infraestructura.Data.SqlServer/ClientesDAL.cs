@@ -36,7 +36,7 @@ namespace Infraestructura.Data.SqlServer
         public Clientes BuscarCliente(string xcod)
         {
             Clientes obj = new Clientes();
-            SqlDataReader lector = SqlHelper.ExecuteReader("USP_LISTAR_CLIENTES_X_CODIGO", xcod);
+            SqlDataReader lector = SqlHelper.ExecuteReader(CAD_CN,"USP_LISTAR_CLIENTES_X_CODIGO", xcod);
             while (lector.Read())
             {
                 obj.codcli = lector.GetString(0);
@@ -54,7 +54,7 @@ namespace Infraestructura.Data.SqlServer
         public string ActualizarCliente(Clientes obj)
         {
             string mensaje = "";
-            int registro = SqlHelper.ExecuteNonQuery("USP_ACTUALIZAR_CLIENTES", obj.codcli, obj.nomcli, obj.coddis,
+            int registro = SqlHelper.ExecuteNonQuery(CAD_CN,"USP_ACTUALIZAR_CLIENTES", obj.codcli, obj.nomcli, obj.coddis,
                 obj.direccioncli, obj.dnicli,obj.emailcli,obj.celcli);
             if (registro == 1)
                 mensaje = "Cliente "+obj.nomcli+" actualizado correctamente";
@@ -62,9 +62,10 @@ namespace Infraestructura.Data.SqlServer
         }
         public string InsertarCliente(Clientes obj)
         {
+            
+            int registro = SqlHelper.ExecuteNonQuery(CAD_CN,"USP_INSERTAR_CLIENTES", 
+                obj.codcli, obj.nomcli, obj.coddis,obj.direccioncli, obj.dnicli, obj.emailcli, obj.celcli);
             string mensaje = "";
-            int registro = SqlHelper.ExecuteNonQuery("USP_INSERTAR_CLIENTES", obj.codcli, obj.nomcli, obj.coddis,
-                obj.direccioncli, obj.dnicli, obj.emailcli, obj.celcli);
             if (registro == 1)
                 mensaje = "Cliente " + obj.nomcli + " insertado correctamente";
             return mensaje;
@@ -72,7 +73,7 @@ namespace Infraestructura.Data.SqlServer
         public string EliminarCliente(Clientes obj)
         {
             string mensaje = "";
-            int registro = SqlHelper.ExecuteNonQuery("USP_ELIMINAR_CLIENTES_LOGIC", obj.codcli);
+            int registro = SqlHelper.ExecuteNonQuery(CAD_CN,"USP_ELIMINAR_CLIENTES_LOGIC", obj.codcli);
             if (registro == 1)
                 mensaje = "Cliente " + obj.nomcli + " agregado correctamente";
             return mensaje;

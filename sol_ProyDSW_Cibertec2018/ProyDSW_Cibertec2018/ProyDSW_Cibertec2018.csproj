@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -137,6 +138,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Empleado\ListaTodoEmpleados.cshtml" />
+    <Content Include="Views\Clientes\ListarCliente.cshtml" />
+    <Content Include="Views\Clientes\DetalleCliente.cshtml" />
+    <Content Include="Views\Clientes\CreateCliente.cshtml" />
+    <Content Include="Views\Clientes\DeleteCliente.cshtml" />
+    <Content Include="Views\Clientes\EditarCliente.cshtml" />
     <Content Include="Views\Empleado\EliminarEmpleado.cshtml" />
     <Content Include="Views\Empleado\ActualizaEmpleados.cshtml" />
     <Content Include="Views\Empleado\InsertarEmpleado.cshtml" />
