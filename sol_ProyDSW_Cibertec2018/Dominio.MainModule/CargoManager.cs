@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Infraestructura.Data.SqlServer;
 using Dominio.Core.Entidades;
 
 namespace Dominio.MainModule
 {
-    public class LoginManager
+    public class CargoManager
     {
+        CargoDAL objC = new CargoDAL();
 
-        LoginDAL objL = new LoginDAL();
-
-        public List<Login> listar_Login()
+        public List<Cargo> Listado_Todo_Cargo()
         {
-            return objL.listar_Login();
+            return objC.Listado_Todo_Cargo();
         }
-
     }
 }

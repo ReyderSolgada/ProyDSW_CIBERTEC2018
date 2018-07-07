@@ -11,24 +11,15 @@ namespace ProyDSW_Cibertec2018.Controllers
 {
     public class LoginController : Controller
     {
-
-        LoginManager lm = new LoginManager();
-        // GET: Login
-        public ActionResult Inicio_Sesion()
-        {
-            return View(new Login());
-        }
-
-
         
+        EmpleadoManager em = new EmpleadoManager();
 
-        
         public ActionResult Cerrar_Sesion()
         {
             try
             {
                 Session.Clear();
-                return RedirectToAction("Inicio_Sesion");
+                return RedirectToAction("Inicio_Sesion_Empleado");
             }
             catch
             {
@@ -36,25 +27,29 @@ namespace ProyDSW_Cibertec2018.Controllers
             }
         }
 
+        public ActionResult Inicio_Sesion_Empleado()
+        {
+            return View(new Empleado());
+        }
 
         [HttpPost]
-        public ActionResult Inicio_Sesion(Login l)
+        public ActionResult Inicio_Sesion_Empleado(Empleado l)
         {
             try
             {
-                var lista = lm.listar_Login().Where(x => x.Usuario.Equals(l.Usuario.ToString()) && x.Contraseña.Equals(l.Contraseña.ToString())).FirstOrDefault();
+                var lista = em.Listado_Todo_Emleado().Where(x => x.dni.Equals(l.dni.ToString()) && x.contra.Equals(l.contra.ToString())).FirstOrDefault();
 
 
-                if(lista !=null)
+                if (lista != null)
                 {
-                    Session["LogUser"] = l.Usuario.ToString();
-                   
+                    Session["LogUser"] = lista.contra.ToString();
+                    
 
-                    return RedirectToAction("Listado_Cliente");
+                    return RedirectToAction("ListaTodoEmpleados", "Empleado");
                 }
                 else
                 {
-                    return View(new Login());
+                    return View(new Empleado());
                 }
             }
             catch
@@ -63,84 +58,7 @@ namespace ProyDSW_Cibertec2018.Controllers
             }
         }
 
+
         
-        public ActionResult Listado_Cliente()
-        {
-            if(Session["LogUser"]!=null)
-            {
-                return View(lm.listar_Login().ToList());
-            }
-            else
-            {
-                return RedirectToAction("Inicio_Sesion");
-            }
-            
-        }
-
-        // GET: Login/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Login/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Login/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Login/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Login/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Login/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

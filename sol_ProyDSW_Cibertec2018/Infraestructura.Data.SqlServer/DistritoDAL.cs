@@ -8,22 +8,29 @@ using System.Data.SqlClient;
 
 namespace Infraestructura.Data.SqlServer
 {
-   public class DistritoDAL:Variable
+    public class DistritoDAL:Variable
     {
-        public List<Distrito> ListarDistrito()
+        public List<Distrito> Listado_Todo_Distrito()
         {
             List<Distrito> lista = new List<Distrito>();
+
             SqlDataReader lector = SqlHelper.ExecuteReader(CAD_CN, "USP_LISTAR_DISTRITOS");
+
             while (lector.Read())
             {
-                Distrito obj = new Distrito();
-                obj.coddis = lector.GetString(0);
-                obj.nomdis = lector.GetString(1);
-               lista.Add(obj);
+                Distrito d = new Distrito();
+
+                d.coddis = lector.GetString(0);
+                d.nomdis = lector.GetString(1);
+
+                lista.Add(d);
             }
+
             lector.Close();
+
             return lista;
         }
+
 
     }
 }

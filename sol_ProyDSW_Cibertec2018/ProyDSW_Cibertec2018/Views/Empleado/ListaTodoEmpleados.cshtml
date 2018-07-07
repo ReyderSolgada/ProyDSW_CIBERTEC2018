@@ -6,10 +6,18 @@
 
 <h2>ListaTodoEmpleados</h2>
 
+@if (Session["LogUser"] != null)
+{
+    <label>Bienvenido @Session["LogUser"].ToString()</label>
+}
+
+<a href="/Login/Cerrar_Sesion">Cerrar Sesion</a>
+
+
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "InsertarEmpleado")
 </p>
-<table class="table">
+<table class="table" style="text-align:center">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.codemp)
@@ -27,6 +35,9 @@
             @Html.DisplayNameFor(model => model.dni)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.correo)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.turno)
         </th>
         <th>
@@ -39,55 +50,61 @@
             @Html.DisplayNameFor(model => model.codcargo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.contra)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.eliminado)
         </th>
-        <th></th>
+        <th>
+            Opciones
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.codemp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nomemp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.coddis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.direccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dni)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.turno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.celular)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_ing)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.codcargo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contra)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.eliminado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codemp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomemp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coddis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.turno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_ing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codcargo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.eliminado)
+            </td>
+            <td>
+                @Html.ActionLink("Actualizar", "ActualizaEmpleados", new { codemp = item.codemp }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Eliminar", "EliminarEmpleado", new { xcodemp = item.codemp })
+            </td>
+        </tr>
+    }
 
 </table>
+
+
+<script>
+    if ('@ViewBag.MUESTRA' != "")
+        alert('@ViewBag.MUESTRA');
+</script>

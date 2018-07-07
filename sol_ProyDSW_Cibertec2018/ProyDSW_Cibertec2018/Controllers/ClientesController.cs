@@ -30,7 +30,7 @@ namespace ProyDSW_Cibertec2018.Controllers
         // GET: Clientes/Create
         public ActionResult CreateCliente()
         {
-            ViewBag.DISTRITO = new SelectList(dm.ListarDistrito(), "coddis", "nomdis");
+            ViewBag.DISTRITO = new SelectList(dm.Listado_Todo_Distrito(), "coddis", "nomdis");
             return View(new Clientes());
         }
 
@@ -40,7 +40,7 @@ namespace ProyDSW_Cibertec2018.Controllers
         {
             try
             {
-                ViewBag.DISTRITO = new SelectList(dm.ListarDistrito(), "coddis", "nomdis",obj.coddis);
+                ViewBag.DISTRITO = new SelectList(dm.Listado_Todo_Distrito(), "coddis", "nomdis",obj.coddis);
                 string mensaje = cm.InsertarCliente(obj);
                 TempData["MENSAJE"] = mensaje;
                 //return View(obj);
@@ -55,7 +55,7 @@ namespace ProyDSW_Cibertec2018.Controllers
         // GET: Clientes/Edit/5
         public ActionResult EditarCliente(string xcod)
         {
-            ViewBag.DISTRITO = new SelectList(dm.ListarDistrito(), "coddis", "nomdis");
+            ViewBag.DISTRITO = new SelectList(dm.Listado_Todo_Distrito(), "coddis", "nomdis");
             return View(cm.BuscarCliente(xcod));
         }
 
@@ -65,7 +65,7 @@ namespace ProyDSW_Cibertec2018.Controllers
         {
             try
             {
-                ViewBag.DISTRITO = new SelectList(dm.ListarDistrito(), "coddis", "nomdis", obj.coddis);
+                ViewBag.DISTRITO = new SelectList(dm.Listado_Todo_Distrito(), "coddis", "nomdis", obj.coddis);
                 string mensaje = cm.ActualizarCliente(obj);
                 TempData["MENSAJE"] = mensaje;
                 return RedirectToAction("ListarCliente");

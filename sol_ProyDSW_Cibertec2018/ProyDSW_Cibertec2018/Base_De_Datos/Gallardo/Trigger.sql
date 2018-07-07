@@ -1,0 +1,43 @@
+USE BD_DSWI
+GO
+
+IF OBJECT_ID('TG_GENERA_CONTRAS_EMPLEADO','P') IS NOT NULL
+	DROP PROCEDURE TG_GENERA_CONTRAS_EMPLEADO
+GO
+CREATE TRIGGER TG_GENERA_CONTRAS_EMPLEADO
+ON TBEMPLEADOS
+AFTER  INSERT
+AS 
+BEGIN 
+DECLARE @NOM CHAR(4)
+DECLARE @DNI CHAR(4)
+DECLARE @ID CHAR(5)
+DECLARE @EMAIL varchar(50)
+DECLARE @MENSAJE varchar(250)
+DECLARE @XDNI CHAR(8)
+DECLARE @XNOM VARCHAR(50)
+
+	SELECT @NOM=SUBSTRING(inserted.NOMEMP,0,5),@DNI=SUBSTRING(inserted.DNI,0,5), @ID=inserted.CODEMP,@EMAIL=inserted.EMAIL FROM inserted
+	UPDATE TBEMPLEADOS SET TBEMPLEADOS.CONTRA=CONCAT(@NOM,@DNI)
+	WHERE TBEMPLEADOS.CODEMP=@ID
+
+	SELECT @XNOM=NOMEMP,@XDNI=DNI FROM TBEMPLEADOS
+
+	SELECT @MENSAJE='Estimado usuario '+ @XNOM +'<br/>' +
+	'Este es su Usuario:  '+ @XDNI + '<br/>'+
+	'Esta es su contraseña Autogenerada:  ' + CONTRA + '<br/>' +
+	'Por Favor Cambiar La Contraseña desde la configuracion de usuarios.'
+	 FROM TBEMPLEADOS
+
+	EXEC  msdb.dbo.sp_send_dbmail 
+	@profile_name='GallardoEnvio',
+	@recipients= @EMAIL,
+	@subject= 'Envio de Contraseña C#',
+	@body=@MENSAJE,
+	@body_format = 'HTML'
+
+END
+
+
+SELECT 'Trigger CREADO CORRECTAMENTE' AS MENSAJE
+GO

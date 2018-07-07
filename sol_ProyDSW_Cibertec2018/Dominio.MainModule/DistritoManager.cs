@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dominio.Core.Entidades;
 using Infraestructura.Data.SqlServer;
+using Dominio.Core.Entidades;
 
 namespace Dominio.MainModule
 {
     public class DistritoManager
     {
         DistritoDAL objD = new DistritoDAL();
-        public List<Distrito> ListarDistrito()
+
+        public List<Distrito> Listado_Todo_Distrito()
         {
-            return objD.ListarDistrito();
+            return objD.Listado_Todo_Distrito();
         }
 
     }

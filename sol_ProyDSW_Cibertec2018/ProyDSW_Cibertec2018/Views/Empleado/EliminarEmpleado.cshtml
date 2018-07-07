@@ -1,0 +1,121 @@
+﻿@model Dominio.Core.Entidades.Empleado
+
+@{
+    ViewBag.Title = "EliminarEmpleado";
+}
+
+<h2>EliminarEmpleado</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codemp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codemp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomemp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomemp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.coddis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.coddis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dni)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dni)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.turno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.turno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codcargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codcargo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eliminado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eliminado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "ListaTodoEmpleados")
+        </div>
+    }
+</div>

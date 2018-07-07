@@ -19,6 +19,20 @@ namespace Dominio.MainModule
             return objL.Listado_Todo_Emleado();
         }
 
+        public string EliminaEmpleado(Empleado emp)
+        {
+            return objL.EliminaEmpleado(emp);
+        }
+
+        public string InsertaEmpleado(Empleado emp)
+        {
+            return objL.InsertaEmpleado(emp);
+        }
+
+        public string ActualizaEmpleado(Empleado emp)
+        {
+            return objL.ActualizaEmpleado(emp);
+        }
 
     }
 }

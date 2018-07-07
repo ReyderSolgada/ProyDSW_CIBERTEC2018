@@ -94,6 +94,11 @@
     <Content Include="Base_De_Datos\BD_DSWI_insert.sql" />
     <Content Include="Base_De_Datos\BD_DSWI_procedures.sql" />
     <Content Include="Base_De_Datos\BD_DSWI_triggers.sql" />
+    <Content Include="Base_De_Datos\Gallardo\Base_De_Datos.sql" />
+    <Content Include="Base_De_Datos\Gallardo\Envio_De_Correo.png" />
+    <Content Include="Base_De_Datos\Gallardo\insert.sql" />
+    <Content Include="Base_De_Datos\Gallardo\Procedures.sql" />
+    <Content Include="Base_De_Datos\Gallardo\Trigger.sql" />
     <Content Include="Base_De_Datos\Login_de_Prueba.sql" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -118,12 +123,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CarritoDAO.cs" />
+    <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SQLHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\producto_carrito.cs" />
+    <Compile Include="Models\usp_listar_productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,15 +141,19 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Login\Listado_Cliente.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Login\Inicio_Sesion.cshtml" />
     <Content Include="Views\Empleado\ListaTodoEmpleados.cshtml" />
     <Content Include="Views\Clientes\ListarCliente.cshtml" />
     <Content Include="Views\Clientes\DetalleCliente.cshtml" />
     <Content Include="Views\Clientes\CreateCliente.cshtml" />
     <Content Include="Views\Clientes\DeleteCliente.cshtml" />
     <Content Include="Views\Clientes\EditarCliente.cshtml" />
+    <Content Include="Views\Empleado\EliminarEmpleado.cshtml" />
+    <Content Include="Views\Empleado\ActualizaEmpleados.cshtml" />
+    <Content Include="Views\Empleado\InsertarEmpleado.cshtml" />
+    <Content Include="Views\Login\Inicio_Sesion_Empleado.cshtml" />
+    <Content Include="Views\Productos\ListaProductos.cshtml" />
+    <Content Include="Views\Productos\Seleccionar_Producto.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -149,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dominio.Core.Entidades\Dominio.Core.Entidades.csproj">

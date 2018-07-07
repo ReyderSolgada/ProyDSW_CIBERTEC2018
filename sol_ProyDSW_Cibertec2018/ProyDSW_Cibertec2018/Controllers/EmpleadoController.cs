@@ -12,35 +12,54 @@ namespace ProyDSW_Cibertec2018.Controllers
 {
     public class EmpleadoController : Controller
     {
+        
 
         EmpleadoManager em = new EmpleadoManager();
-        // GET: Empleado
+        CargoManager cm = new CargoManager();
+        DistritoManager dm = new DistritoManager();
+       
+
         public ActionResult ListaTodoEmpleados()
         {
-            return View(em.Listado_Todo_Emleado().ToList());
+            if (TempData["MENSAJE"] != null)
+                ViewBag.MUESTRA = TempData["MENSAJE"].ToString();
+
+            if (Session["LogUser"] != null)
+            {
+                return View(em.Listado_Todo_Emleado().ToList());
+            }
+            else
+            {
+                return   RedirectToAction("Inicio_Sesion_Empleado", "Login");
+            }     
         }
 
-        // GET: Empleado/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Empleado/Create
-        public ActionResult Create()
+
+        public ActionResult InsertarEmpleado()
         {
-            return View();
+            ViewBag.CARGO = new SelectList(cm.Listado_Todo_Cargo(), "CODCARGO", "NOMCARGO");
+            ViewBag.DISTRITO = new SelectList(dm.Listado_Todo_Distrito(), "CODDIS", "NOMDIS");
+
+            if (Session["LogUser"] != null)
+                return View(new Empleado());
+            else
+                return RedirectToAction("Inicio_Sesion_Empleado", "Login");
         }
 
-        // POST: Empleado/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult InsertarEmpleado(Empleado emp)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                string alerta = em.InsertaEmpleado(emp);
+                string alerta2 = "Usuario " + emp.nomemp +" Creado Correctamemte";
+                TempData["MENSAJE"] = alerta2;
+                return RedirectToAction("ListaTodoEmpleados");
             }
             catch
             {
@@ -49,20 +68,30 @@ namespace ProyDSW_Cibertec2018.Controllers
         }
 
         // GET: Empleado/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult ActualizaEmpleados(string codemp)
         {
-            return View();
+           
+
+            var filtra = em.Listado_Todo_Emleado().Where(x => x.codemp.Equals(codemp)).FirstOrDefault();
+            ViewBag.CARGO = new SelectList(cm.Listado_Todo_Cargo().ToList(), "CODCARGO", "NOMCARGO",filtra.codcargo);
+            ViewBag.DISTRITO = new SelectList(dm.Listado_Todo_Distrito().ToList(), "CODDIS", "NOMDIS",filtra.coddis);
+
+            if (Session["LogUser"] != null)
+                return View(filtra);
+
+            else
+                return RedirectToAction("Inicio_Sesion_Empleado", "Login");
         }
 
         // POST: Empleado/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult ActualizaEmpleados(string codemp, Empleado emp)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                string alerta = em.ActualizaEmpleado(emp);
+                TempData["MENSAJE"] = alerta;
+                return RedirectToAction("ListaTodoEmpleados");
             }
             catch
             {
@@ -70,21 +99,33 @@ namespace ProyDSW_Cibertec2018.Controllers
             }
         }
 
-        // GET: Empleado/Delete/5
-        public ActionResult Delete(int id)
+        // GET: EliminarEmpleado
+        public ActionResult EliminarEmpleado(string xcodemp)
         {
-            return View();
+            var filtracod = em.Listado_Todo_Emleado().Where(x => x.codemp.Equals(xcodemp)).FirstOrDefault();
+
+            if (Session["LogUser"] != null)
+                return View(filtracod);
+       
+              else
+                return RedirectToAction("Inicio_Sesion_Empleado", "Login");
         }
 
-        // POST: Empleado/Delete/5
+        // POST: EliminarEmpleado
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult EliminarEmpleado(string xcodemp, Empleado emp)
         {
             try
             {
-                // TODO: Add delete logic here
+                emp = new Empleado();
+                emp= em.Listado_Todo_Emleado().Where(x => x.codemp.Equals(xcodemp)).FirstOrDefault();
 
-                return RedirectToAction("Index");
+
+                string alerta = em.EliminaEmpleado(emp);
+
+                TempData["MENSAJE"] = alerta;
+
+                return RedirectToAction("ListaTodoEmpleados");
             }
             catch
             {

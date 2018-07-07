@@ -20,7 +20,7 @@ namespace Dominio.MainModule
         {
             return objC.BuscarCliente(xcod);
         }
-        public string ActualizarCliente(Clientes obj)GGFDFFDFDFD
+        public string ActualizarCliente(Clientes obj)
         {
             return objC.ActualizarCliente(obj);
         }
@@ -31,7 +31,7 @@ namespace Dominio.MainModule
         public string EliminarCliente(Clientes obj)
         {
             return objC.EliminarCliente(obj);
-        }
+        }  
 
     }
 }
