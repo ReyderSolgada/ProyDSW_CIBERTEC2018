@@ -45,8 +45,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.celcli)
             </td>
-            <td>@*@Html.ActionLink("Editar", "EditarCliente", new { xcod = item.codcli },new{@class="btn btn-primary" })*@
-            <a class="btn btn-primary" data-toggle="modal" data-target="#frm-editar-cliente">Editar</a></td>
+            <td>@Html.ActionLink("Editar", "EditarCliente", new { xcod = item.codcli },new{@class="btn btn-primary" })
+            @*<a class="btn btn-primary" data-toggle="modal" data-target="#frm-editar-cliente">Editar</a>*@</td>
                <td> @Html.ActionLink("Detalle", "DetalleCliente", new { xcod = item.codcli }, new { @class = "btn btn-success" })</td>
                <td> @Html.ActionLink("Eliminar", "DeleteCliente", new { xcod = item.codcli }, new { @class = "btn btn-danger" })</td>
         </tr>
@@ -54,7 +54,7 @@
 
 </table>
 
-@*<div class="modal fade" id="frm-editar-cliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="frm-editar-cliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
     <div class="modal-dialog" role="document">
 
@@ -124,7 +124,7 @@
 
     </div>
 
-</div>*@
+</div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
