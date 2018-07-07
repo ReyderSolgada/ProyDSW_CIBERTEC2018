@@ -199,6 +199,9 @@
     <Content Include="Views\Login\Inicio_Sesion_Empleado.cshtml" />
     <Content Include="Views\Shared\_PartialListadoProducto.cshtml" />
     <Content Include="Views\Productos\ListadoProductos.cshtml" />
+    <Content Include="Views\Shared\_PartialSeleccioneProductos.cshtml" />
+    <Content Include="Views\Productos\Comprar.cshtml" />
+    <Content Include="Views\Productos\Seleccionar_Articulo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

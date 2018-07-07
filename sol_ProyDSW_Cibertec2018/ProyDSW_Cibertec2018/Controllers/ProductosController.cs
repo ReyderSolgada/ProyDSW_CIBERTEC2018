@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 using Dominio.Core.Entidades;
 using Dominio.MainModule;
+using ProyDSW_Cibertec2018.Models;
 
 namespace ProyDSW_Cibertec2018.Controllers
 {
@@ -16,79 +17,59 @@ namespace ProyDSW_Cibertec2018.Controllers
         // GET: Productos
         public ActionResult ListadoProductos()
         {
+
+            if (Session["carrito"] == null)
+            {
+                List<Item> carrito = new List<Item>();
+                Session["carrito"] = carrito;
+            }
+
             return View(pm.Listado_Todo_Productos().ToList());
         }
 
         // GET: Productos/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Seleccionar_Articulo(String id = "")
         {
-            return View();
+            Productos usp = pm.Listado_Todo_Productos().Where(x => x.codpro.Equals(id)).FirstOrDefault();
+            return View(usp);
         }
 
         // GET: Productos/Create
-        public ActionResult Create()
+        public ActionResult Agregar_Carrito(String codpro)
         {
-            return View();
+            Productos usp2 = pm.Listado_Todo_Productos().Where(c => c.codpro.Equals(codpro)).FirstOrDefault();
+
+            Item a = new Item();
+            a.codpro = usp2.codpro;
+            a.nompro = usp2.nompro;
+            a.cantidad = 1;
+            a.precio = usp2.precio;
+
+
+            List<Item> carrito = (List<Item>)Session["carrito"];
+
+            carrito.Add(a);
+            Session["Carrito"] = carrito;
+
+
+            return RedirectToAction("ListadoProductos");
         }
 
-        // POST: Productos/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
+  
         // GET: Productos/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Comprar()
         {
-            return View();
+
+            List<Item> carrito = (List<Item>)Session["carrito"];
+            if(carrito.Count==0)
+            {
+                return RedirectToAction("ListadoProductos");
+
+            }
+
+            return View(carrito);
         }
 
-        // POST: Productos/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Productos/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Productos/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+      
     }
 }

@@ -1,0 +1,23 @@
+﻿@model Dominio.Core.Entidades.Productos
+
+
+<link href="~/css/EstiloCarrito.css" rel="stylesheet" />
+
+<div class="cuerpo">
+    <div class="agrega">
+        Codigo: @Model.codpro <br />
+        Nombre: @Model.nompro <br />
+        Precio: @Model.precio <br />
+        Stock: @Model.stock <br />
+
+    </div>
+    <div>
+        <img class="imagen_sel" src="@Url.Content("~/fotos_articulos/"+Model.codpro+".jpg")" />
+    </div>
+
+    <p>
+        @Html.ActionLink("Agregar al Carrito", "Agregar_Carrito", new { Model.codpro }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Regresar", "ListadoProductos", new { Model.codpro }, new { @class = "btn btn-success" })
+    </p>
+</div>
+

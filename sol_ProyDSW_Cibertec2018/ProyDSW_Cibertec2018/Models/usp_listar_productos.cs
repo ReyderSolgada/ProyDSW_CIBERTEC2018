@@ -7,10 +7,12 @@ namespace ProyDSW_Cibertec2018.Models
 {
     public class usp_listar_productos
     {
-        public String prod_cod { get; set; }
-        public String prod_nom { get; set; }
-        public int prod_stk { get; set; }
-        public double prod_pre { get; set; }
+        public string codpro { get; set; }
+        public string nompro { get; set; }
+        public int stock { get; set; }
+        public decimal precio { get; set; }
+        public string codtipo { get; set; }
+        public string eliminado { get; set; }
 
 
     }
