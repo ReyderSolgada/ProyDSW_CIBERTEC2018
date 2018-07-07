@@ -12,17 +12,12 @@ namespace ProyDSW_Cibertec2018.Controllers
 {
     public class ProductosController : Controller
     {
+        ProductoManager pm = new ProductoManager();
         CarritoDAO objDAO = new CarritoDAO();
         // GET: Producto
-        public ActionResult ListaProductos(String prod_nom="")
+        public ActionResult ListaProductos()
         {
-            if (Session["carrito"] == null)
-            {
-                List<producto_carrito> carrito = new List<producto_carrito>();
-                Session["carrito"] = carrito;
-            }
-            ViewBag.PROD_NOM = prod_nom;
-            return View(objDAO.usp_listar_productos(prod_nom));
+         return View(pm.ListarProductos().ToList());
         }
 
         // GET: Producto/Details/5

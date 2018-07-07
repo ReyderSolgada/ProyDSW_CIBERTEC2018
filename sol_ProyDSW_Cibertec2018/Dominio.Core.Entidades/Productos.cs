@@ -21,9 +21,11 @@ namespace Dominio.Core.Entidades
         [DisplayName("Stock de Producto")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Stock Obligatorio")]
         public int stock { get; set; }
+
         [DisplayName("Precio de Producto")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Precio Obligatorio")]
         public double precio { get; set; }
+
         [DisplayName("Tipo de Producto")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Tipo de producto obligatorio")]
         public String codtipo { get; set; }
